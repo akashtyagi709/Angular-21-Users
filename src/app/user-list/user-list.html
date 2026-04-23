@@ -1,0 +1,45 @@
+<div class="page">
+
+  <div class="header">
+    <h2>All Users</h2>
+
+    <div class="actions">
+      <button routerLink="/add-user" class="add-btn">+ Add User</button>
+    </div>
+  </div>
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        @if (users.length == 0) {
+          <tr>
+            <td colspan="3" class="empty">No users found</td>
+          </tr>
+        }
+
+        @for (user of users; track $index;) {
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
