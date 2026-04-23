@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
 import { Api } from '../services/api';
 import { RouterModule } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 export class UserList implements OnInit {
  users: any[] = [];
 
-  constructor(private api: Api) {}
+  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -22,6 +22,7 @@ export class UserList implements OnInit {
       console.log(res)
       this.users = res.data; // adjust if your response structure differs
             console.log(this.users)
+            this.cdr.detectChanges();
 
     });
   }
